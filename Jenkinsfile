@@ -15,10 +15,12 @@ pipeline {
 
     stage('Push Docker image') {
       steps {
-        sh '''# docker login
-# docker tag node-hello:$BUILD_ID ddadoune/node-hello:$BUILD_ID
-# && docker push ddadoune/node-hello:$BUILD_ID'''
+        withDockerRegistry(credentialid:'dockerhub', url:'https://registry.hub.docker.com'){
+        sh '''
+        # docker tag node-hello:$BUILD_ID ddadoune/node-hello:$BUILD_ID
+        # && docker push ddadoune/node-hello:$BUILD_ID'''
       }
+    }
     }
 
   }
