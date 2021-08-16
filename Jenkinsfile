@@ -8,6 +8,7 @@ pipeline {
   stages {
     stage('checkout') {
       steps {
+        cleanWs()
         git(url: 'https://github.com/DadouneDa/node-hello.git', branch: 'master', changelog: true, poll: true, credentialsId: 'dd_github')
       }
     }
