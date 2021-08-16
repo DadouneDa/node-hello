@@ -7,5 +7,19 @@ pipeline {
       }
     }
 
+    stage('build docker image') {
+      steps {
+        sh '# docker build -t node-hello:$BUILD_ID'
+      }
+    }
+
+    stage('Push Docker image') {
+      steps {
+        sh '''# docker login
+# docker tag node-hello:$BUILD_ID ddadoune/node-hello:$BUILD_ID
+# && docker push ddadoune/node-hello:$BUILD_ID'''
+      }
+    }
+
   }
 }
