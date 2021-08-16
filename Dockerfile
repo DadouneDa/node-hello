@@ -1,4 +1,4 @@
-FROM node:LATEST
+FROM node
 MAINTAINER DD
 
 WORKDIR /var/app
