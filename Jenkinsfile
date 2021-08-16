@@ -15,7 +15,7 @@ pipeline {
 
     stage('Push Docker image') {
       steps {
-        withDockerRegistry(credentialid:'dockerhub', url:'https://index.docker.io/v1/'){
+        withDockerRegistry(credentialsId: 'dockerhub', url: 'https://index.docker.io/v2/'){
         sh '''
         # docker tag node-hello:$BUILD_ID ddadoune/node-hello:$BUILD_ID
         # && docker push ddadoune/node-hello:$BUILD_ID'''
